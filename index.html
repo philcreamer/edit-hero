@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>FREELANCE QUEST III — EDIT HERO: REMIX</title><style>
+:root{--ink:#191429;--pink:#ff4ea0;--yellow:#ffe56a;--cyan:#5ef1ec;--lime:#b5ff71}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#45316c,#171225 75%);color:white;font:16px system-ui,sans-serif;min-height:100vh}main{max-width:880px;margin:auto;padding:10px}h1,h2,.impact{font-family:Impact,'Arial Black',sans-serif;letter-spacing:1.5px}h1{font-size:clamp(32px,6vw,64px);margin:4px 0;color:var(--yellow);text-shadow:5px 5px #e84385,-3px -3px #222}p{line-height:1.4}.sub{color:#e9d9ff;margin:0 0 12px}.shell{border:5px solid #0b0916;background:#292040;box-shadow:9px 9px #0d0a16;border-radius:12px;overflow:hidden}.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#19142b;padding:10px 14px;font-weight:800}.top span{color:var(--yellow)}.game{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 165px;min-height:560px}.play{position:relative;min-width:0;overflow:hidden;background:linear-gradient(#20152f,#35244d)}canvas{width:100%;height:560px;display:block;touch-action:manipulation}.side{padding:9px;background:#2b2241;border-left:4px solid #110d1b}.screen{background:#0c1020;border:4px solid #635b86;min-height:112px;padding:7px;position:relative;overflow:hidden}.screen:before{content:'PREVIEW MONITOR';display:block;font:12px Impact;color:#9ba6cb;margin-bottom:10px}.performer{font-size:46px;text-align:center;filter:drop-shadow(3px 4px #e34d91);transition:transform .12s}.meter{height:16px;border:2px solid #fff;margin:8px 0 12px;background:#13101d}.meter>div{height:100%;background:linear-gradient(90deg,#f45c98,#ffe56a);width:0%}.side h2{font-size:17px;color:var(--cyan);margin:14px 0 5px}.status{font-size:14px;line-height:1.5}.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.key{background:#171226;border:3px solid #fff;border-radius:9px;color:white;min-height:65px;font-weight:900;cursor:pointer;touch-action:manipulation}.key b{display:block;font:25px Impact}.key small{display:block;font-size:11px}.key:nth-child(1){border-color:#ff66a7}.key:nth-child(2){border-color:#ffe16c}.key:nth-child(3){border-color:#63e5e4}.key:nth-child(4){border-color:#aeff73}.key:active,.key.active{transform:translateY(3px);background:#67518d}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}button.action{background:var(--yellow);border:3px solid #110d1b;border-radius:7px;padding:10px 15px;font:19px Impact;cursor:pointer;color:#171127}button.secondary{background:#d8caff}.hint{font-size:13px;color:#e1d4f6}.overlay{position:absolute;inset:0;background:#151126eb;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:5}.overlay h2{font-size:clamp(36px,6vw,68px);color:var(--yellow);text-shadow:4px 4px #ff4ea0;margin:0}.overlay p{max-width:490px}.overlay button{margin:8px}.hide{display:none}.footer{font-size:13px;color:#c9b9e4;margin-top:15px}@media(max-width:750px){.game{grid-template-columns:1fr}.side{border-left:0;border-top:4px solid #110d1b;display:grid;grid-template-columns:1fr 1fr;gap:10px}.side h2{margin:0}.screen{min-height:120px}.performer{font-size:44px}canvas{height:480px}.keys{position:sticky;bottom:0;background:#171225;padding:8px;z-index:8}.key{min-height:58px}.top{font-size:13px}}@media(max-width:440px){.side{display:block}}
+ .modepick{margin:10px 0;display:flex;align-items:center;gap:12px;justify-content:center;font-weight:800}.modepick select{font:18px Impact;background:#fff2c4;color:#21162c;padding:8px;border:3px solid #ff4ea0;border-radius:6px} .chord{font-size:13px;color:#ffe56a;font-weight:800} .hire-link{display:inline-block;margin-top:16px;background:#ffe56a;color:#171225;border:3px solid #171225;border-radius:7px;padding:12px 18px;font:22px Impact;text-decoration:none;letter-spacing:1px}.hire-link:hover{background:#5ef1ec}.overlay{overflow-y:auto}.overlay p{line-height:1.65}.key{min-height:74px}.key b{font-size:32px}@media(max-width:750px){.side{display:none}.game{display:block}.play{min-height:0}.keys{grid-template-columns:repeat(4,1fr)}} </style>
+<style id="iphone-touch-support">
+@media (max-width:750px) {
+ html,body{overscroll-behavior:none}
+ main{padding:4px 5px calc(104px + env(safe-area-inset-bottom,0px))}
+ h1{font-size:clamp(25px,7vw,38px);margin:2px 0 5px}
+ .shell{border-width:3px;box-shadow:none}
+ .top{padding:5px 7px;gap:4px;font-size:11px;justify-content:space-around}
+ .game{min-height:0}
+ .play{height:min(68dvh,610px);min-height:300px}
+ canvas{width:100%;height:100%;touch-action:none}
+ .keys{position:fixed;left:0;right:0;bottom:0;margin:0;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;background:#110d20;z-index:20;border-top:3px solid #fff;box-shadow:0 -5px 20px #0009;touch-action:none}
+ .key{min-width:0;min-height:76px;padding:4px 0;border-width:3px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+ .key b{font-size:12px;line-height:1;opacity:.75}
+ .key small{font:clamp(14px,4vw,21px) Impact,'Arial Black',sans-serif;letter-spacing:.3px}
+ .key:active,.key.active{background:#75609d;transform:scale(.96)}
+ .overlay{padding:12px;z-index:6}
+ .overlay h2{font-size:clamp(29px,8vw,46px)}
+ .overlay p{font-size:14px;margin:6px 0}
+ .modepick{margin:6px 0}
+ .controls{margin-top:8px}
+ .footer{margin-top:8px}
+}
+@media (max-width:750px) and (max-height:690px) {
+ .play{height:calc(100dvh - 166px);min-height:270px}
+ .key{min-height:64px}
+}
+</style>
+
+<style id="remix-theme">
+:root{--ink:#07152d;--pink:#84b9ff;--yellow:#ffffff;--cyan:#b2e6ff;--lime:#b6f6ff}
+@property --spin-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes chroma{0%{--spin-angle:0deg;filter:hue-rotate(0deg)}50%{--spin-angle:180deg;filter:hue-rotate(22deg)}100%{--spin-angle:360deg;filter:hue-rotate(0deg)}}
+@keyframes float-glow{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.8;transform:scale(1.2)}}
+body{font-family:Verdana,Arial,sans-serif;background:#030916;color:#f6faff;position:relative;isolation:isolate}
+body:before{content:'';position:fixed;inset:-40%;z-index:-2;pointer-events:none;background:conic-gradient(from var(--spin-angle) at 50% 50%,#071331,#14539a,#524fbb,#0c7e9c,#0b1e49,#071331);animation:chroma 24s linear infinite;filter:blur(75px);opacity:.9}
+body:after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 75% 10%,#91dcff30,transparent 50%),linear-gradient(155deg,#07122577,#02091bbb)}
+main{max-width:950px;padding:12px 16px 26px}
+h1{font-family:Georgia,'Times New Roman',serif;font-weight:normal;letter-spacing:3px;color:#fff;font-size:clamp(28px,5vw,49px);text-shadow:0 2px 12px #81ceff,2px 3px #071532;margin:10px 0 14px}
+h1 span{font-family:Verdana,Arial,sans-serif;font-size:.27em!important;letter-spacing:3px}
+.shell{border:3px solid #d7e7ff;border-radius:4px;background:linear-gradient(145deg,#122d72e8,#071844e8 52%,#08113adf);box-shadow:inset 0 0 0 2px #4d8be1,0 15px 50px #0008,0 0 24px #9ac8ff45}
+.top{background:linear-gradient(90deg,#06183f,#2255a4,#071d4b);border-bottom:2px solid #d2e4ff;letter-spacing:.4px;font-size:13px}
+.top span{color:#fff;text-shadow:0 0 8px #a7dbff}
+.game{grid-template-columns:minmax(0,1fr) 165px}
+.play{background:linear-gradient(165deg,#081b4a,#122967 65%,#051536)}
+.side{background:linear-gradient(135deg,#113f86,#07163d);border-left:2px solid #dce9ff}
+.screen{border:2px solid #cfe3ff;background:linear-gradient(160deg,#142a62,#06112e);box-shadow:inset 0 0 14px #02091a}
+.screen:before{color:#b8d9ff}
+.side h2{color:#e4f5ff;font:12px Verdana,sans-serif;letter-spacing:1px}
+.meter{border:1px solid #fff;background:#0a1944}
+.meter>div{background:linear-gradient(90deg,#3875c9,#8feaff)}
+.keys{gap:7px}
+.key{border-radius:3px;background:linear-gradient(160deg,#1b4e99,#071a4e);border:2px solid #d7e8ff;box-shadow:inset 0 0 0 1px #4680c9;color:#fff}
+.key:nth-child(n){border-color:#d7e8ff}
+.key small{letter-spacing:1.2px}
+.key:active,.key.active{background:#3779bc;box-shadow:0 0 16px #a5dfff}
+button.action{font-family:Georgia,serif;font-size:17px;background:linear-gradient(135deg,#e9f6ff,#9fc5ff);color:#061a42;border:2px solid #fff;border-radius:3px;box-shadow:0 3px 12px #0006}
+button.secondary{background:linear-gradient(135deg,#184a97,#0a2057);color:white}
+.overlay{background:linear-gradient(150deg,#061332f5,#174ba4f5 48%,#07183cf5);border:3px solid #dceaff;inset:10px;box-shadow:inset 0 0 0 2px #5e9ee8}
+.overlay h2{font-family:Georgia,serif;font-weight:normal;color:#fff;letter-spacing:2px;text-shadow:0 0 12px #8bd8ff;font-size:clamp(29px,5vw,52px)}
+.overlay p{font-size:14px}
+.modepick{gap:9px;margin:7px 0;flex-wrap:wrap;font:12px Verdana,sans-serif;letter-spacing:.5px}
+.modepick select{max-width:min(95%,420px);font:14px Verdana,sans-serif;background:#0b285f;color:#fff;border:2px solid #e6f2ff;border-radius:2px;padding:10px 8px;box-shadow:inset 0 0 10px #174c9c}
+.hire-link{background:linear-gradient(120deg,#f2f9ff,#8ccaff);color:#071a44;border-color:#fff;font:17px Georgia,serif}
+.footer,.hint{color:#c6e1ff}
+@media(max-width:750px){main{padding:5px 5px calc(104px + env(safe-area-inset-bottom,0px))}h1{font-size:clamp(25px,7vw,37px);margin:4px 6px 8px}.shell{box-shadow:0 0 16px #8bcaff50}.overlay{inset:3px;padding:10px}.overlay h2{font-size:clamp(27px,7vw,42px)}.overlay p{margin:4px 0}.modepick{margin:4px 0}.modepick select{font-size:12px;padding:8px 5px}.keys{background:linear-gradient(90deg,#06183d,#15428a,#071c48);border-top:2px solid #e3efff}.key{min-height:76px}.key small{font-size:clamp(13px,3.5vw,19px)}.key b{font-size:11px}}
+@media(prefers-reduced-motion:reduce){body:before{animation:none}}
+</style>
+</head><body><main><h1>EDIT HERO! <span style="font-size:.38em;vertical-align:middle;color:#fff">PART III</span></h1><div class="shell"><div class="top"><div>STAGE: <span id="stage">INGEST</span></div><div>COMBO: <span id="combo">0</span></div><div>SCORE: <span id="score">0</span></div><div>QUALITY: <span id="quality">100%</span></div></div><div class="game"><div class="play"><canvas id="board" width="640" height="560" aria-label="Four-lane rhythm game, notes fall toward the timing line"></canvas><div class="overlay" id="overlay"><h2 id="headline">EDIT HERO!</h2><p id="message">Choose your soundtrack. Hit each edit on the beat. Finish the song and deliver the video.</p><div class="modepick"><label for="track">SOUNDTRACK</label><select id="track"><option value="0">01 · MIDNIGHT GROOVE — JAZZ FUNK</option><option value="1">02 · NEON RUSH — ELECTRO</option><option value="2">03 · LAST EXPORT — BREAKBEAT</option></select></div><div class="modepick"><label for="difficulty">DIFFICULTY</label><select id="difficulty"><option value="normal">NORMAL</option><option value="hard">HARD — DOUBLE NOTES</option></select></div><button class="action" id="start">START THE EDIT</button><p class="hint">Tap the four large buttons on iPhone, or use A / S / K / L on desktop · Hard mode supports two-finger notes</p></div></div><aside class="side"><div><div class="screen"><div class="performer" id="performer">🎸</div><div id="previewLabel" style="text-align:center;font:14px Impact;color:#ffe56a">RAW FOOTAGE</div></div><h2>CLIENT APPROVAL</h2><div class="meter"><div id="approval"></div></div><div class="status" id="feedback">“Can you make it pop?”</div></div><div><h2>EDIT KEYS</h2><p class="status"><b style="color:#ff66a7">A</b> CUT &nbsp; <b style="color:#ffe16c">S</b> SYNC<br><b style="color:#63e5e4">K</b> COLOR &nbsp; <b style="color:#aeff73">L</b> FX</p></div></aside></div></div><div class="keys"><button class="key" data-lane="0"><small>CUT</small><b>A</b></button><button class="key" data-lane="1"><small>SYNC</small><b>S</b></button><button class="key" data-lane="2"><small>COLOR</small><b>K</b></button><button class="key" data-lane="3"><small>FX</small><b>L</b></button></div><div class="controls"><button class="action secondary" id="sound">MUSIC: ON</button><button class="action secondary" id="restart">RESTART</button></div><p class="footer">FREELANCE QUEST III · An original rhythm game from Here On Out Sessions</p></main><script>
+(()=>{'use strict';
+const canvas=document.getElementById('board'),ctx=canvas.getContext('2d'),$=id=>document.getElementById(id);
+const W=640,H=560,hitY=440,laneW=128,baseX=64,colors=['#ffbd6d','#8fe0ff','#b7b5ff','#8fffd1'],labels=['CUT','SYNC','COLOR','FX'],keys=['A','S','K','L'];
+const tracks=[
+ {name:'MIDNIGHT GROOVE',style:'JAZZ FUNK',bpm:108,beats:144,roots:[55,65.41,73.42,61.74],mel:[220,261.63,293.66,246.94],bass:'triangle',lead:'sine',kick:.25,snare:.12,hat:.042},
+ {name:'NEON RUSH',style:'SYNTH ELECTRO',bpm:132,beats:176,roots:[65.41,82.41,73.42,98],mel:[261.63,329.63,293.66,392],bass:'sawtooth',lead:'square',kick:.31,snare:.085,hat:.065},
+ {name:'LAST EXPORT',style:'BROKEN BEATS',bpm:122,beats:160,roots:[49,58.27,65.41,55],mel:[196,233.08,261.63,220],bass:'square',lead:'triangle',kick:.29,snare:.16,hat:.065}
+ ];
+ let track=tracks[0],bpm=track.bpm,beat=60/bpm,totalBeats=track.beats,duration=totalBeats*beat,travel=2.55;
+let notes=[],running=false,ended=false,mode='normal',elapsed=0,score=0,combo=0,quality=100,good=0,miss=0,fx=[],muted=false,actx=null,master=null,audioOrigin=0,wallOrigin=0,nextStep=0,clockMode='wall',seed=1,pressed=new Set(),lastVisual=0;
+function random(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+function makeNotes(){seed=1934+tracks.indexOf(track)*771;notes=[];let previous=-1;for(let i=4;i<totalBeats-2;i++){
+  const section=Math.floor(i/32),phrase=i%16,style=tracks.indexOf(track);
+  let lane=(i*3+Math.floor(i/4)+Math.floor(random()*3))%4;
+  if(lane===previous&&random()<.7)lane=(lane+1+Math.floor(random()*3))%4;
+  previous=lane;
+  const add=(pos,l,kind='tap')=>notes.push({t:pos*beat,lane:l,kind,done:false});
+  if(phrase===0||phrase===8){add(i,lane);if(style===1&&section>0)add(i+.5,(lane+1)%4)}
+  else if(phrase===3||phrase===11){add(i+(style===2?.75:.5),lane)}
+  else if(phrase===6||phrase===14){add(i,lane);if(section>=1)add(i+.5,(lane+1+Math.floor(random()*2))%4)}
+  else if(phrase===5||phrase===13){add(i,lane);if(section>=2)add(i+.75,(lane+2)%4)}
+  else if(phrase===1||phrase===9){add(i,lane)}
+  else if(phrase===2||phrase===10){if(section>=1)add(i+.5,lane)}
+  else if(phrase===4||phrase===12){add(i,lane)}
+  else if(phrase===7||phrase===15){add(i+(style===0?.5:.75),lane)}
+  if(mode==='hard'&&i>=12&&(phrase===0||phrase===4||phrase===8||phrase===12||phrase===14)){
+    const at=(phrase===14?i:i)*beat, other=(lane+2+(phrase===8?1:0))%4;
+    if(!notes.some(n=>Math.abs(n.t-at)<.001&&n.lane===other))notes.push({t:at,lane:other,kind:'double',done:false});
+  }
+}
+notes.sort((a,b)=>a.t-b.t||a.lane-b.lane);
+}
+function initAudio(){try{if(!actx){actx=new(window.AudioContext||window.webkitAudioContext)();master=actx.createGain();master.gain.value=.38;master.connect(actx.destination)}actx.resume();return actx.state==='running'}catch(e){$('feedback').textContent='Audio unavailable: visual rhythm mode';return false}}
+function tone(freq,time,len,type='triangle',vol=.1){if(!actx||muted)return;let o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.setValueAtTime(freq,time);g.gain.setValueAtTime(.0001,time);g.gain.exponentialRampToValueAtTime(Math.max(.001,vol),time+.012);g.gain.exponentialRampToValueAtTime(.0001,time+len);o.connect(g);g.connect(master);o.start(time);o.stop(time+len+.03)}
+function noise(time,len,high,vol){if(!actx||muted)return;let buf=actx.createBuffer(1,Math.floor(actx.sampleRate*len),actx.sampleRate),data=buf.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*(1-i/data.length);let src=actx.createBufferSource(),filter=actx.createBiquadFilter(),g=actx.createGain();src.buffer=buf;filter.type='highpass';filter.frequency.value=high;g.gain.value=vol;src.connect(filter);filter.connect(g);g.connect(master);src.start(time)}
+function scheduleMusic(){
+ if(!actx||clockMode!=='audio'||!running||muted)return;
+ const now=actx.currentTime,style=tracks.indexOf(track);
+ while(nextStep<totalBeats*4&&audioOrigin+nextStep*beat/4<now+.23){
+  const h=nextStep,step=h%16,bar=Math.floor(h/16),t=audioOrigin+h*beat/4;
+  if(t>now-.055){
+   const root=track.roots[bar%4],lead=track.mel[bar%4];
+   if(style===0){ // warm jazz-funk: syncopated bass, soft electric keys, brushed kit
+    if(step===0||step===8)tone(76,t,.16,'sine',track.kick);
+    if(step===4||step===12)noise(t,.105,1050,track.snare);
+    if(step%2===0)noise(t,.025,6200,track.hat);
+    if([0,3,6,10,14].includes(step))tone(root*(step===14?2:1),t,.22,track.bass,.10);
+    if([2,7,11,15].includes(step)){tone(lead,t,.19,'sine',.075);tone(lead*1.25,t,.18,'triangle',.035)}
+   }else if(style===1){ // dance electro: driving four-on-floor and arpeggio
+    if(step%4===0)tone(85,t,.18,'sine',track.kick);
+    if(step===4||step===12)noise(t,.13,750,track.snare);
+    if(step%2===0)noise(t,.036,5500,track.hat);
+    if(step%4===0||step===14)tone(root,t,.19,'sawtooth',.073);
+    if(step%2===1)tone(lead*[1,1.25,1.5,2][Math.floor(step/4)],t,.11,'square',.042);
+   }else{ // syncopated breakbeat: irregular kicks and metallic melody
+    if([0,6,10].includes(step))tone(92,t,.17,'sine',track.kick);
+    if([4,11,12].includes(step))noise(t,.13,1050,track.snare);
+    if([0,2,3,6,8,10,13,15].includes(step))noise(t,.025,6900,track.hat);
+    if([0,5,8,13].includes(step))tone(root*(step===13?2:1),t,.17,'square',.055);
+    if([3,7,10,15].includes(step))tone(lead*[1,1.5,1.25,2][[3,7,10,15].indexOf(step)],t,.13,'triangle',.07);
+   }
+  }
+  nextStep++;
+ }
+}
+function timeNow(){if(clockMode==='audio'&&actx&&actx.state==='running')return Math.max(0,actx.currentTime-audioOrigin);return Math.max(0,performance.now()/1000-wallOrigin)}
+function updateHUD(){$('score').textContent=score;$('combo').textContent=combo;$('quality').textContent=Math.max(0,Math.round(quality))+'%';$('approval').style.width=Math.min(100,Math.max(0,good/Math.max(1,notes.length)*100))+'%';$('stage').textContent=elapsed<duration/3?'ROUGH CUT':elapsed<duration*2/3?'SYNC & COLOR':'FINAL POLISH'}
+async function start(){mode=$('difficulty').value;track=tracks[Number($('track').value)||0];bpm=track.bpm;beat=60/bpm;totalBeats=track.beats;duration=totalBeats*beat;makeNotes();score=combo=good=miss=elapsed=0;quality=100;fx=[];ended=false;running=false;nextStep=0;pressed.clear();$('overlay').classList.add('hide');$('performer').textContent='🎸';$('previewLabel').textContent='RAW FOOTAGE';$('feedback').textContent=track.name+' · '+track.style;
+  const ready=initAudio();if(actx){try{await actx.resume()}catch(e){}}clockMode=actx&&actx.state==='running'?'audio':'wall';audioOrigin=actx?actx.currentTime+.24:0;wallOrigin=performance.now()/1000+.24;running=true;updateHUD()}
+function finish(win){ended=true;running=false;$('overlay').classList.remove('hide');$('headline').textContent=win?'THANK YOU FOR PLAYING!':'CLIENT REQUESTS REVISIONS';$('message').innerHTML=win?`<strong>YOU DELIVERED THE VIDEO!</strong><br>${score.toLocaleString()} points · ${good} edits.<br><br>Now you know the lengths <strong>Here On Out Sessions</strong> goes to for a great video. <strong>Consider hiring us for your next project!</strong><br><a class="hire-link" href="https://hereonoutsessions.com/" target="_blank" rel="noopener noreferrer">EXPLORE OUR SERVICES ↗</a>`:`Your timeline collapsed at ${Math.round(elapsed)} seconds after ${miss} missed edits. The client has sent 14 follow-up emails.`;$('start').textContent='PLAY AGAIN'}
+function press(lane){if(!running||ended||elapsed<0)return;elapsed=timeNow();let nearest=null,diff=Infinity;for(const n of notes){if(n.done||n.lane!==lane)continue;let d=Math.abs(n.t-elapsed);if(d<diff){diff=d;nearest=n}}
+  const window=mode==='hard'?.155:.19;let rating='';if(nearest&&diff<=window){nearest.done=true;combo++;good++;let perfect=diff<.065;score+=(perfect?300:150)+Math.min(500,combo*4);quality=Math.min(100,quality+.42);rating=perfect?'PERFECT!':'NICE!';$('previewLabel').textContent=['CLEAN CUT!','AUDIO LOCKED!','COLOR GRADED!','FX APPLIED!'][lane];$('performer').style.transform=`rotate(${(lane-1.5)*4}deg) scale(1.12)`;if(actx&&actx.state==='running')tone([440,523,659,784][lane],actx.currentTime,.12,'triangle',.08)}else{combo=0;quality=Math.max(0,quality-1.8);rating='OFF BEAT!'}fx.push({text:rating,life:.6});$('feedback').textContent=rating;updateHUD();if(quality<=0)finish(false)}
+function draw(){const c=ctx,t=elapsed;c.clearRect(0,0,W,H);c.fillStyle='#09183e';c.fillRect(0,0,W,H);for(let i=0;i<32;i++){let x=(i*97)%W,y=(i*53+Math.floor(t*12))%H;c.fillStyle=i%3===0?'#22519a':'#102d69';c.fillRect(x,y,3,3)}c.fillStyle='#061431';c.fillRect(baseX-8,0,laneW*4+16,H);for(let i=0;i<4;i++){let x=baseX+i*laneW;c.fillStyle=i%2?'#143976':'#103267';c.fillRect(x,0,laneW-2,H);c.fillStyle=colors[i];c.font='bold 21px Impact';c.textAlign='center';c.fillText(labels[i],x+laneW/2,35);c.fillStyle='#ffffff13';for(let y=(t*170)%90-90;y<H;y+=90)c.fillRect(x+4,y,laneW-10,2)}c.fillStyle='#fff';c.fillRect(baseX-10,hitY-7,laneW*4+20,14);c.fillStyle='#061b42';c.fillRect(baseX-10,hitY+7,laneW*4+20,64);for(let i=0;i<4;i++){let x=baseX+i*laneW;c.fillStyle=colors[i];c.fillRect(x+7,hitY+14,laneW-16,46);c.fillStyle='#171123';c.font='bold 32px Impact';c.fillText(keys[i],x+laneW/2,hitY+49)}if(running){for(const n of notes){if(n.done)continue;let y=hitY-(n.t-t)*(hitY-75)/travel;if(y<45||y>H+30)continue;let x=baseX+n.lane*laneW+9;c.fillStyle='#110c1a';c.fillRect(x+4,y-25,laneW-18,54);c.fillStyle=colors[n.lane];c.fillRect(x,y-29,laneW-18,54);c.strokeStyle=n.kind==='double'?'#ffe56a':'#fff';c.lineWidth=n.kind==='double'?5:3;c.strokeRect(x,y-29,laneW-18,54);c.fillStyle='#071b41';c.font='bold 30px Impact';c.fillText(keys[n.lane],x+(laneW-18)/2,y+10)}}fx=fx.filter(e=>e.life>0);for(const e of fx){c.font='26px Impact';c.fillStyle=e.text==='PERFECT!'?'#b9f6ff':'#fff';c.textAlign='center';c.fillText(e.text,baseX+laneW*2,125-e.life*16);e.life-=1/60}c.fillStyle='#e7f5ff';c.font='19px Impact';c.fillText(`SONG ${Math.min(100,Math.round(t/duration*100))}%`,W/2,H-18)}
+function loop(){if(running&&!ended){elapsed=timeNow();scheduleMusic();for(const n of notes){if(!n.done&&elapsed-n.t>.22){n.done=true;combo=0;miss++;quality=Math.max(0,quality-(mode==='hard'?2.1:2.7));$('feedback').textContent='MISSED EDIT! “Where is the footage?”'}}if(quality<=0)finish(false);else if(elapsed>=duration)finish(true);updateHUD()}draw();requestAnimationFrame(loop)}
+document.addEventListener('keydown',e=>{let m={KeyA:0,KeyS:1,KeyK:2,KeyL:3,ArrowLeft:0,ArrowDown:1,ArrowUp:2,ArrowRight:3};if(m[e.code]!==undefined){e.preventDefault();if(!e.repeat&&!pressed.has(e.code)){pressed.add(e.code);press(m[e.code])}}});document.addEventListener('keyup',e=>pressed.delete(e.code));window.addEventListener('blur',()=>pressed.clear());document.querySelectorAll('[data-lane]').forEach(b=>{
+ const held=new Set();
+ b.addEventListener('pointerdown',e=>{
+   e.preventDefault();
+   if(e.pointerType==='mouse'&&e.button!==0)return;
+   held.add(e.pointerId);
+   try{b.setPointerCapture(e.pointerId)}catch(_){}
+   b.classList.add('active');
+   press(Number(b.dataset.lane));
+ });
+ const release=e=>{held.delete(e.pointerId);if(!held.size)b.classList.remove('active')};
+ b.addEventListener('pointerup',release);
+ b.addEventListener('pointercancel',release);
+ b.addEventListener('lostpointercapture',release);
+ b.addEventListener('contextmenu',e=>e.preventDefault());
+});$('start').onclick=start;$('restart').onclick=start;$('sound').onclick=()=>{muted=!muted;$('sound').textContent='MUSIC: '+(muted?'OFF':'ON');if(!muted&&actx)actx.resume()};draw();requestAnimationFrame(loop);
+})();
+</script></body></html>
